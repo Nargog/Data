@@ -9,9 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+var myMeasurement = mätdata()
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        myMeasurement.dataSet = [1,2,3,4,5,6,7,8]
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -20,6 +27,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    
+    
+    @IBOutlet weak var lblOutResultat: UILabel!
+    
+    @IBAction func btnCalculate(_ sender: UIButton) {
+        
+        lblOutResultat.text = (" :: Sann0: \(myMeasurement.sannolikhetNormal(sannolikhetLägreVärde: 0.95)), \(myMeasurement.EulersTal()) ")
+        //fördelning \(fördelningsFunktion(xStop: 1))
+    }
 }
 

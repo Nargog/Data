@@ -14,6 +14,7 @@
 		49B105572041FFED00D091A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49B105552041FFED00D091A5 /* LaunchScreen.storyboard */; };
 		49B105622041FFED00D091A5 /* NormalFo_rdelningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B105612041FFED00D091A5 /* NormalFo_rdelningTests.swift */; };
 		49B1056D2041FFED00D091A5 /* NormalFo_rdelningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B1056C2041FFED00D091A5 /* NormalFo_rdelningUITests.swift */; };
+		49B1057B2042005800D091A5 /* NormFordelning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B1057A2042005800D091A5 /* NormFordelning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		49B105682041FFED00D091A5 /* NormalFördelningUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NormalFördelningUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B1056C2041FFED00D091A5 /* NormalFo_rdelningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalFo_rdelningUITests.swift; sourceTree = "<group>"; };
 		49B1056E2041FFED00D091A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49B1057A2042005800D091A5 /* NormFordelning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormFordelning.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				49B105532041FFED00D091A5 /* Assets.xcassets */,
 				49B105552041FFED00D091A5 /* LaunchScreen.storyboard */,
 				49B105582041FFED00D091A5 /* Info.plist */,
+				49B1057A2042005800D091A5 /* NormFordelning.swift */,
 			);
 			path = "NormalFördelning";
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49B1054F2041FFED00D091A5 /* ViewController.swift in Sources */,
+				49B1057B2042005800D091A5 /* NormFordelning.swift in Sources */,
 				49B1054D2041FFED00D091A5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
