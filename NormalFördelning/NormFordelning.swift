@@ -11,6 +11,9 @@ import Foundation
 class mätdata {
 
     var dataSet = [Double]()
+    // TODO: Hantera en tom array count = 0
+    
+    
     
     var medel:Double {
         get{
@@ -18,18 +21,25 @@ class mätdata {
             for index in 0..<dataSet.count {
                 tempSum += dataSet[index]
             }
+            if dataSet.isEmpty {
+                return 0
+            } else {
             return tempSum / Double(dataSet.count)
+            }
         }
     }
     
-    var standardavvikelse: Double {
+    var standardavvikelse: Double? {
         get{
-           
-            return sqrt(variansen)
+            if let variansenValue = variansen {
+                return sqrt(variansenValue)
+            } else {
+                return nil
+            }
         }
     }
     
-    var variansen: Double {
+    var variansen: Double? {
         get{
             var tempSum = 0.0
             for index in 0..<dataSet.count {
@@ -39,13 +49,15 @@ class mätdata {
         }
     }
 
-    func factorial (Indata: Int)-> Int {
+    func factorial (Indata: Int)-> Int? {
         if Indata == 0 {
             return 1
-        } else  {
+        } else  if Indata < 0 {
+            return nil
+        } else {
             var resultat = Indata
             if Indata > 1 {
-                resultat = factorial(Indata: Indata - 1) * Indata
+                resultat = factorial(Indata: Indata - 1)! * Indata
             } else if Indata == 0 {
                 return resultat
             }
@@ -53,6 +65,23 @@ class mätdata {
             return resultat
         }
     }
+    
+    // Standardfel https://sv.wikipedia.org/wiki/Standardfel
+    //TODO: lägg in standardfel
+    
+    func standardfel () -> Double? {
+        
+        if dataSet.isEmpty {
+            return nil
+        } else {
+            if let variansValue = variansen {
+                return sqrt(variansValue/Double(dataSet.count))
+            } else {
+                return nil
+            }
+        }
+    }
+    
     
 // Eulers tal
     
@@ -67,7 +96,7 @@ class mätdata {
             
             
             
-            sumE3 += (2*Double(index) + 2)/Double(factorial(Indata: 2*index + 1)) // sum(1/n!)
+            sumE3 += (2*Double(index) + 2)/Double(factorial(Indata: 2*index + 1)!) // sum(1/n!)
             
             
         }
@@ -103,7 +132,7 @@ func fördelningsFunktion (xStop:Double) -> Double {
 }
 // indata väntvärde och standardavvikelse samt önskad sannolikhet för lägre värde sannolikhetLägreVärde
 // returenerar värde som med (sannolikhetLägreVärde) underskrids
-func sannolikhetNormal (sannolikhetLägreVärde : Double) -> Double {
+func sannolikhetNormal (sannolikhetLägreVärde : Double) -> Double? {
     
     //let xStart = 0.0
     
@@ -116,26 +145,34 @@ func sannolikhetNormal (sannolikhetLägreVärde : Double) -> Double {
     //Sannolikhet för att
     if sannolikhetLägreVärde < 1, sannolikhetLägreVärde > 0.5 {
     
-    while integralSum < sannolikhetLägreVärde - 0.5 {
-        xBin += xStep
-        integralSum += frekvensFunktion(xBin: xBin) * xStep
-        
-        }
-        
-        return medel + xBin * standardavvikelse
-        } else if sannolikhetLägreVärde > 0 {
-        
-        while integralSum <  0.5 - sannolikhetLägreVärde {
+        while integralSum < sannolikhetLägreVärde - 0.5 {
             xBin += xStep
             integralSum += frekvensFunktion(xBin: xBin) * xStep
             
+            }
+            if let standardValue = standardavvikelse {
+            return medel + xBin * standardValue
+            } else {
+                return nil
+            }
+        } else if sannolikhetLägreVärde > 0 {
+    
+            while integralSum <  0.5 - sannolikhetLägreVärde {
+                xBin += xStep
+                integralSum += frekvensFunktion(xBin: xBin) * xStep
+                
+            }
+        if let standardValue = standardavvikelse {
+            return medel - xBin * standardValue
+        } else {
+            return nil
         }
         
-        return medel - xBin * standardavvikelse
+        
             
         } else {
         
-        return 0.0
+        return nil
         
         
             
@@ -143,3 +180,4 @@ func sannolikhetNormal (sannolikhetLägreVärde : Double) -> Double {
         
     }
 }
+

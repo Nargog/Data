@@ -33,7 +33,7 @@ var myMeasurement = mätdata()
     
     @IBAction func btnCalculate(_ sender: UIButton) {
         
-        lblOutResultat.text = (" :: Sann0: \(myMeasurement.sannolikhetNormal(sannolikhetLägreVärde: 0.95)), \(myMeasurement.EulersTal()) ")
+        lblOutResultat.text = (" :: Sann0: \(String(describing: myMeasurement.sannolikhetNormal(sannolikhetLägreVärde: 0.95))), \(myMeasurement.factorial(Indata: 1)!) ")
         //fördelning \(fördelningsFunktion(xStop: 1))
     }
 }
